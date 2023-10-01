@@ -8,7 +8,7 @@ const Darkmode = () => {
     const {theme, switchTheme} = useContext(AppContext)
 
     // Using useState hook to set the mode as we need to render lightmode or darkmode based on the mode
-    const [mode, setMode] = useState({theme});
+    const [mode, setMode] = useState(theme);
 
     // Function to handle the toogle switch
     function clickHandler(){
