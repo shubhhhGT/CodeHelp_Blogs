@@ -5,6 +5,7 @@ There are 3 steps that need to be followed in order to create a context and use 
 import { createContext, useState } from "react";
 import { baseUrl } from "../baseUrl";
 import useLocalStorage from 'use-local-storage';
+import { useNavigate } from "react-router-dom";
 
 //Step 1 => Creating the context
 export const AppContext = createContext();
@@ -19,15 +20,24 @@ export default function AppContextProvider({children}){
     const [pageNumber, setPageNumber] = useState(1); //initially the blog page number is 1
     const [toatalPageNumber, setToatalPageNumber] = useState(null) //initailly we do not know about the total page number
     const [posts, setPosts] = useState([]) //initailly there are no posts
+    const navigate = useNavigate();
 
     //Data Filling
-    async function fetchBlogPosts(pageNumber=1){
+    async function fetchBlogPosts(pageNumber=1, tag=null, category){
 
         //till the data is fetched, we have to show loading
         setLoading(true);
 
         //Get the url for Api call
-        const url = `${baseUrl}?page=${pageNumber}`;
+        let url = `${baseUrl}?page=${pageNumber}`;
+        // The url for API call when tag is clicked 
+        if (tag){
+            url += `&tag=${tag}`;
+        }
+        // The url for API call when Category is clicked
+        if (category){
+            url += `&category=${category}`;
+        }
         //Api Call
         try{
             const response = await fetch(url);
@@ -52,8 +62,8 @@ export default function AppContextProvider({children}){
     function handlePageChange(pageNumber){
         //this handles the page change 
         // Once the initial page number changes, this will update the page number and call fetch the blogs for the same page number
+        navigate({search: `?page=${pageNumber}`});
         setPageNumber(pageNumber);
-        fetchBlogPosts(pageNumber);
     }
 
     //Since Dark mode is also needed, we'll write the logic here and pass the data
@@ -83,7 +93,8 @@ export default function AppContextProvider({children}){
         handlePageChange,
         theme,
         setTheme,
-        switchTheme
+        switchTheme,
+        defaultDark
     }
 
     //Step 3 => Sending the data for consumption
