@@ -5,6 +5,9 @@ module.exports = {
   ],
   theme: {
     extend: {
+      screens: {
+        'xs': '475px',
+      },
       boxShadow: {
         'header-shadow': 'var(--header-shadow)',
         'footer-shadow' : 'var(--footer-shadow)',
