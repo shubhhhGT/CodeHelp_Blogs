@@ -79,7 +79,7 @@ const BlogPage = () => {
                             {
                                 relatedBlogs ? 
                                 (relatedBlogs.map( (post) => (
-                                    <div key={post.id}>
+                                    <div key={post.id} className='mb-6'>
                                         <BlogDetails post={post} />
                                     </div>
                                 ))) : 
