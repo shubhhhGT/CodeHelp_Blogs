@@ -6,7 +6,7 @@ const BlogDetails = ({post}) => {
     <div className='w-[300px] xs:w-full h-full text-textColor transition-all ease-in-out duration-700'>
         {/* USing namvlink to redirect to the given link by clicking on the title */}
        <NavLink to={`/blog/${post.id}`}>
-            <span className='font-bold text-[15px] xs:text-lg hover:underline-'>
+            <span className='font-bold text-[15px] xs:text-lg hover:underline'>
                 {post.title}
             </span>
        </NavLink>
