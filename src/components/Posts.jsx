@@ -35,37 +35,3 @@ const Posts = () => {
 }
 
 export default Posts
-
-
-{/* <div key={post.id} className='w-[300px] sm:w-full text-textColor transition-all ease-in-out duration-700'>
-{/* Mapping all posts so that only one post has to be styled and others will be styled accordingly  */}
-{/* <p className='font-bold text-[15px] sm:text-lg'>
-    {post.title}
-</p>
-
-<p className='sm:text-sm text-xs'>
-    By <span className='italic mt-1'>
-    {post.author}
-    </span> on <span className='underline font-semibold'>{post.category}</span>
-</p>
-
-<p className='text-sm mt-1'>
-    Posted on
-    <span>{post.date}</span>
-</p>
-
-<p className='text-md text-justify mt-2'>{post.content}</p>
-
-<div className='flex gap-x-3 mt-2'>
-    {
-        post.tags.map( (tag, index) => {
-            return(
-                <span key={index} className='text-blue-700 underline font-bold text-[9px] sm:text-xs'>
-                    {`#${tag}`}
-                </span>
-            )
-        })
-    }
-</div>
-
-</div> */}
